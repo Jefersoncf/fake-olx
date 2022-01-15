@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const fileupload = require('express-fileupload');
 
+const apiRoutes = require('./src/routes'); //import routes
+
 mongoose.connect(process.env.DATABASE, async(error) => {
     if(error) throw error;
     console.log('Connected on db!');
@@ -24,10 +26,9 @@ server.use(fileupload());
 
 server.use(express.static(__dirname + '/public'));
 
-server.get('/ping', (req, res) => {
-    res.json({ status: true});
-});
+server.use('/', apiRoutes);
 
 server.listen(process.env.PORT, () => {
     console.log('listening on port ' + process.env.BASE);
 });
+
