@@ -12,7 +12,7 @@ mongoose.connect(process.env.DATABASE, async(error) => {
     if(error) throw error;
     console.log('Connected on db!');
 });
-mongoose.Promise = global.Promise;
+// mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (error) => {
     console.log('Error: ', error.message);
 });
@@ -32,3 +32,4 @@ server.listen(process.env.PORT, () => {
     console.log('listening on port ' + process.env.BASE);
 });
 
+// pausa video 13
